@@ -1,0 +1,11 @@
+{
+  "name": "mr-coffee",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {},
+  "dependencies": {
+    "ejs": "~2.6.1",
+    "express": "~4.16.1",
+    "morgan": "~1.9.1"
+  }
+}
