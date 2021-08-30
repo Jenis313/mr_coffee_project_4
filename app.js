@@ -1,9 +1,16 @@
 var express = require('express');
 var path = require('path');
-var logger = require('morgan');
 var app = express();
 const PORT = 3210;
 
+// Initiate database
+require('./db_init');
+
+// Import Routers
+const indexRouter = require('./controllers/index.controller');
+
+// Dev Tool
+var logger = require('morgan');
 app.use(logger('dev'));
 
 // view engine setup
@@ -17,9 +24,7 @@ app.use(express.urlencoded({ extended: false }));
 // static files location setup
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', (req, res, next) => {
-  res.send("Hi, Connected!")
-})
+app.use('/', indexRouter)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
