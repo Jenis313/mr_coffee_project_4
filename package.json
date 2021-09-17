@@ -2,11 +2,18 @@
   "name": "mr-coffee",
   "version": "0.0.0",
   "private": true,
-  "scripts": {},
+  "scripts": {
+    "create_db": "psql -U postgres -f models/sql/create_db.sql",
+    "create_tables": "psql -U postgres -d mr_coffee_db_4 -f models/sql/create_tables.sql"
+  },
   "dependencies": {
+    "bcrypt": "^5.0.1",
+    "cookie-parser": "^1.4.5",
     "ejs": "~2.6.1",
     "express": "~4.16.1",
+    "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.0.2",
-    "morgan": "~1.9.1"
+    "morgan": "~1.9.1",
+    "pg-promise": "^10.11.0"
   }
 }

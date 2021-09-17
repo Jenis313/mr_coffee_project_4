@@ -1,12 +1,85 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home | Mr Coffee</title>
-</head>
-<body>
-    <h1>View all schedules</h1>
-</body>
-</html>
+<%- include('./../partials/header') %>
+<main>
+    <div class="hero">
+        <h1>Mr Coffee<br>Schedule Management App</h1>
+        <div class="app-key-funtions">
+            <div class="create-schedule">
+                <div class="function-logo">
+                    <i class="fas fa-tasks"></i>
+                </div>
+                <div class="function">
+                    <h3>Create</h3>
+                    <p>Create new schedule</p>
+                </div>
+            </div>
+            <div class="view-schedule">
+                <div class="function-logo">
+                    <i class="fas fa-eye"></i>
+                </div>
+                <div class="function">
+                    <h3>View</h3>
+                    <p>See co-worker's schedules</p>
+                </div>
+            </div>
+            <div class="manage-schedule">
+                <div class="function-logo">
+                    <i class="fas fa-edit"></i>
+                </div>
+                <div class="function">
+                    <h3>Manage</h3>
+                    <p>Manage your schedules</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- all Schedules -->
+    <section class="all-schedules">
+        <header>
+            <h2>All Schedules</h2>
+            <a class="create-new" href="#">Create new ></a>
+        </header>
+        <div class="table">
+            <table>
+                <thead class="">
+                    <tr class="">
+                        <th><i class="fas fa-user"></i>Name</th>
+                        <th><i class="fas fa-calendar"></i>Day</th>
+                        <th><i class="fas fa-clock"></i>Start Time</th>
+                        <th><i class="fas fa-stopwatch"></i>End time</th>
+                    </tr>
+                </thead>
+                <tbody>
+                        <% for(let schedule of data) { %>
+                            <tr>
+                                <td>> <a href="./user/<%= schedule.user_id%>"><%= schedule.first_name %> <%= schedule.last_name %></a></td>
+                                <td><%= schedule.day %></td>
+                                <td><%= schedule.start_at %></td>
+                                <td><%= schedule.end_at %></td>
+                            </tr>
+                        <% } %>
+                        <!--
+                    <tr>
+                        <td class="user-name">> <a href="profile.html"><%=  %></a></td>
+                        <td>Monday</td>
+                        <td>05:30:00 PM</td>
+                        <td>12:00:00 AM</td>
+                    </tr>
+                    <tr>
+                        <td class="user-name">> <a href="#">Jenis</a></td>
+                        <td>Monday</td>
+                        <td>05:30:00 PM</td>
+                        <td>12:00:00 AM</td>
+                    </tr>
+                    <tr>
+                        <td class="user-name">> <a href="#">Jenis</a></td>
+                        <td>Monday</td>
+                        <td>05:30:00 PM</td>
+                        <td>12:00:00 AM</td>
+                    </tr> -->
+                </tbody>
+            </table>
+        </div>
+    </section>
+</main>
+<%- include('./../partials/footer') %>

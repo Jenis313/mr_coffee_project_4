@@ -1,0 +1,261 @@
+:root {
+    --soft-black: #808494;	
+    --table-head: #FAFAFA;
+    --blacky-white: #ddd;
+    --gradient-a: rgba(171,195,214,0.9419117988992471);
+    --gradient-b: rgba(247,235,235,1);
+}
+
+*, *::after, *::before{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+h1{
+    font-size: 4em;
+    font-weight: 600;
+}
+h2{
+    font-weight: 600;
+    font-size: 2.8em;
+}
+h3{
+    font-weight: 500;
+    font-size: 2.3em;
+}
+h4{
+    font-weight: 500;
+    font-size: 2.3em;
+}
+h5{
+
+}
+h6{
+
+}
+p{
+
+}
+a{
+    text-decoration: none;
+}
+body{
+    padding: 0 6em;
+    font-size: 15px;
+    font-family: 'Poppins', sans-serif;
+}
+
+ /* main-header and top part */
+.main-header{
+    display: flex;
+    justify-content: space-between;
+    padding: 1.9em 0;
+    align-items: center;
+    font-weight: 400;
+}
+.main-header a{
+    color: black
+}
+.logo img{
+    width: 50px;
+}
+.main-header ul{
+    display: flex;
+    align-items: center;
+}
+.main-header ul li{
+    display: block;
+    margin-left: 2.6em;
+    transition: all ease-in .1s;
+}
+.main-header ul li:hover{
+    transform: scale(1.1);
+    font-weight: 500;
+}
+.log-out a{
+    font-weight: 500;
+}
+
+/* Hero */
+.hero{
+    width: 100%;
+    background: rgb(171,195,214);
+    background: linear-gradient(90deg, rgba(171,195,214,0.9419117988992471) 0%, rgba(247,235,235,1) 100%);
+    border-radius: 30px;
+    padding: 4em 6em;
+}
+.hero h1{
+    text-align: center;
+    line-height: 1.1em;
+    margin-bottom: 1em;
+}
+.small-hero{
+    height: 150px;
+}
+
+/* Home */
+.app-key-funtions{
+    padding: 3em 4em;
+    display: flex;
+    justify-content: space-between;
+    background-color: white;
+    border-radius: 25px;
+}
+.app-key-funtions>div{
+    display: flex;
+}
+
+.function-logo i{
+    font-size: 1.3em;
+    margin: .4em .75em 0 0;
+    color: var(--soft-black);
+}
+.function h3{
+    font-size: 1.7em;
+    font-weight: 600;
+}
+.function p{
+    color: var(--soft-black);
+}
+.table .user-name{
+    font-weight: 600;
+}
+
+/* Profile */
+.profile{
+    text-align: center;
+}
+.fake-img{
+    background-color: var(--gradient-a);
+    width: 110px;
+    height: 110px;
+    overflow: hidden;
+    border: 5px solid white;
+    margin: -55px 0 0 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin:-55px auto 0 auto;
+}
+.fake-img-round{
+    border-radius: 50%;
+}
+.fake-img i{
+    color: white;
+    font-size: 6em;
+    display: block;
+}
+.profile h2{
+    font-size: 1.9em;
+}
+.schedule-profile h2{
+    font-size: 2.8em;
+}
+.profile-email{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--soft-black);
+}
+.profile-email i{
+    display: block;
+    margin-right: .5em;
+}
+
+/* Schedules */
+.all-schedules{
+    margin-top: 3em;
+}
+table{
+    width: 100%;
+    text-align: left;
+    border-collapse: collapse;
+    font-size: 1.1em;
+    table-layout: fixed; /*makes equal width of all elements*/
+}
+.all-schedules thead{
+    background-color: var(--table-head);
+    border-bottom: 1px solid var(--blacky-white);
+}
+.all-schedules header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1em;
+}
+.create-new{
+    display: block;
+    border:1px solid var(--blacky-white);
+    color: black;
+    background-color: white;
+    padding: .7em 1.5em;
+    border-radius: 30px;
+}
+.create-new:hover{
+    background-color: var(--soft-black);
+    color: white;
+}
+table th{
+    padding: 1em 0 1em 3em;
+    font-weight: 500;
+}
+table th i{
+    color: var(--soft-black);
+    margin-right: .6em;
+}
+table tr td{
+    padding: 1em 0 1em 3em;
+    border-bottom: 1px solid #eee;
+}
+
+/* Manage Schedule */
+.add-schedule{
+    margin: 4em 0;
+}
+.add-schedule h3{
+    margin-bottom: .5em;
+}
+.add-schedule-form{
+    display: flex;
+    justify-content: space-between;
+    max-width: 750px;
+    margin: auto;
+}
+.add-schedule-form input:not(#schedule-submit), .add-schedule-form select {
+    border: none;
+    outline: none;
+    border-radius: 15px;
+    padding: .2em .5em;
+}
+.schedule-inputs{
+    border: 1px solid var(--blacky-white);
+    flex:1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #eee;
+    border-radius: 30px;
+    padding: .5em 1em;
+    text-align: center;
+}
+#schedule-submit{
+    outline: none;
+    border: none;
+    padding: 1em 4em;
+    margin-left: 3em;
+    background-color:black;
+    color: white;
+    border-radius: 30px;
+}
+.success-msg{
+    font-weight: 700;
+    width: 100%; 
+    margin-top: 1em;
+    padding: 1em;
+    text-align: center;
+    color:  rgb(57, 211, 57);;
+}
+
+footer{
+    padding: 5em 0 2.5em;
+}

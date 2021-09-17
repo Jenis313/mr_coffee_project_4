@@ -1,0 +1,77 @@
+<%- include('./../partials/header') %>
+<main>
+    <div class="hero small-hero">
+       
+    </div> 
+    <div class="profile schedule-profile">
+        <div class="fake-img">
+            <i class="fas fa-calendar-check"></i>
+        </div>
+        <h2>Manage your schdeules</h2>
+    </div>
+
+    <!-- Add schedule -->
+    <section class="add-schedule">
+        <h3>Add new schedule</h3>
+        <form class="add-schedule-form"  action="/schedule" method="POST">
+            <div class="schedule-inputs">
+                <div class="day">
+                    <label for="day"></label>
+                    <select class="form-control" name="day" id="day">
+                        <option value="Monday">Monday</option> 
+                        <option value="Tuesday">Tuesday</option> 
+                        <option value="Wednesday">Wednesday</option> 
+                        <option value="Thursday">Thursday</option> 
+                        <option value="Friday">Friday</option> 
+                        <option value="Saturday">Saturday</option> 
+                        <option value="Sunday">Sunday</option> 
+                        <!--Loop this for (user array.length -1)  -->
+                    </select>
+                </div>
+                <div class="start_time">
+                    <label for="start_time">Start > </label>
+                    <input type="time" id="start_time" name="start_time" value="13:30">
+                </div>
+                <div class="end_time">
+                    <label for="end_time">End > </label>
+                    <input type="time" id="end_time" name="end_time" value="13:30">
+                </div>
+               
+            </div>
+            <div class="schedule-submit">
+                <input type="submit" id="schedule-submit" value="Add">
+            </div>
+        </form>
+        <% if (typeof message !== 'undefined') { %>
+            <p class="success-msg"><%= message %></p>
+        <% } %>
+    </section>
+    <!-- all Schedules -->
+    <section class="all-schedules">
+        <header>
+            <h3>Your schedules</h3>
+        </header>
+        <div class="table">
+            <table>
+                <thead class="">
+                    <tr class="">
+                        <th><i class="fas fa-calendar"></i>Day</th>
+                        <th><i class="fas fa-clock"></i>Start Time</th>
+                        <th><i class="fas fa-stopwatch"></i>End time</th>
+                        <th><i class=""></i>Manage</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% for(let schedule of schedules) { %>
+                        <tr>
+                            <td><%= schedule.day %></td>
+                            <td><%= schedule.start_at %></td>
+                            <td><%= schedule.end_at %></td>
+                        </tr>
+                    <% } %>
+                </tbody>
+            </table>
+        </div>
+    </section>
+</main>
+<%- include('./../partials/footer') %>

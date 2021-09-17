@@ -1,0 +1,60 @@
+<%- include('./../partials/header') %>
+<main>
+    <div class="hero small-hero">
+    </div> 
+    <div class="profile">
+        <div class="fake-img fake-img-round">
+            <i class="fas fa-user"></i>
+        </div>
+        <h2> <%=first_name %>  <%=last_name %></h2>
+        <div class="profile-email">
+            <i class="fas fa-envelope"></i>
+            <p><%=email %></p>
+        </div>
+    </div>
+
+
+    <!-- all Schedules -->
+    <section class="all-schedules">
+        <header>
+            <h2><span>Jenis</span>'s Schedules</h2>
+        </header>
+        <div class="table">
+            <table>
+                <thead class="">
+                    <tr class="">
+                        <th><i class="fas fa-calendar"></i>Day</th>
+                        <th><i class="fas fa-clock"></i>Start Time</th>
+                        <th><i class="fas fa-stopwatch"></i>End time</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% for(let schedule of schedules) { %>
+                        <tr>
+                            <td><%= schedule.day %></td>
+                            <td><%= schedule.start_at %></td>
+                            <td><%= schedule.end_at %></td>
+                        </tr>
+                    <% } %>
+                    <!-- <tr>
+                        <td>Monday</td>
+                        <td>05:30:00 PM</td>
+                        <td>12:00:00 AM</td>
+                    </tr>
+                    <tr>
+                        <td>Monday</td>
+                        <td>05:30:00 PM</td>
+                        <td>12:00:00 AM</td>
+                    </tr>
+                    <tr>
+                        <td>Monday</td>
+                        <td>05:30:00 PM</td>
+                        <td>12:00:00 AM</td>
+                    </tr> -->
+                </tbody>
+            </table>
+        </div>
+    </section>
+</main> 
+
+<%- include('./../partials/footer') %>

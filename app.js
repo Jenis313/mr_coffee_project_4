@@ -2,29 +2,31 @@ var express = require('express');
 var path = require('path');
 var app = express();
 const PORT = 3210;
+const cookieParser = require('cookie-parser');
 
-// Initiate database
-require('./db_init');
-
-// Import Routers
-const indexRouter = require('./controllers/index.controller');
+// Load main router
+const mainRouter = require('./routes/main.routes')
 
 // Dev Tool
 var logger = require('morgan');
 app.use(logger('dev'));
 
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
+app.set('views', path.join(process.cwd(), 'views'));
 app.set('view engine', 'ejs');
 
 // parsers
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-// static files location setup
-app.use(express.static(path.join(__dirname, 'public')));
+// user cookie parser 
+app.use(cookieParser());
 
-app.use('/', indexRouter)
+//serve static files
+app.use(express.static('public'));
+
+// Main Router
+app.use('/', mainRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -33,7 +35,7 @@ app.use(function(req, res, next) {
     status: 404
   });
 });
-// error handler
+// error handler middleware
 app.use(function(err, req, res, next) {
   console.log('ERROR Handling middleware in execution!!! --> ', err);
 
