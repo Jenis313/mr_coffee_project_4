@@ -6,6 +6,7 @@ const bcrypt = require('bcrypt');
 const saltRounds = 10;
 const jwt = require('jsonwebtoken');
 const  configs = require('./../configs/index');
+const {body, validationResult} = require('express-validator');
 
 // Sign Token
 function generateToken(data){
@@ -35,24 +36,23 @@ router.route('/login')
         .then((user) => {
             console.log('user --> ', user)
             if(!user){
-                return next({
-                    msg: 'Invalid Credientials',
-                    status: 400
+                res.render('./pages/login.ejs', {
+                    error : 'Invalid Credientials!'
                 })
+                return 
             }
             //User found now verify password
             const hash = user.password
             bcrypt.compare(req.body.password, hash)
             .then((result) => {
-                // if verified generate token, set token into header and redirect to home page
+                // if verified, generate token, set token into header and redirect to home page
                 if(result){
                     let token = generateToken(user);//It generates a token for the user
                     res.cookie('jwt', token)
                     res.redirect('../')
                 }else{
-                    next({
-                        msg:'Invalid Credientials',
-                        status: 400
+                    res.render('./pages/login.ejs', {
+                        error : 'Invalid Credientials!'
                     })
                 }
 
@@ -72,34 +72,78 @@ router.route('/register')
         // render register page
         res.render('./pages/register.ejs')
     })
-    .post((req, res, next) => {
+    .post(
+        // Express validator
+        body('first_name', "First name cannot be empty")
+        .notEmpty(),
+
+        body('last_name', "Last name cannot be empty")
+        .notEmpty(),
+    
+        body('email', "Empty or invalid email")
+        .isEmail(),
+        body('email').custom(value => {
+            return db.oneOrNone('SELECT * FROM users WHERE email = $1', value)
+            .then((user) => {
+                if(user){
+                    return Promise.reject('Email already in use');
+                }
+            })
+          }), 
+
+        body('password', "Password cannot be empty")
+        .notEmpty(),
+        body('password', "Password must be longer than 6 characters and contain a letter, a number and a special character")
+        .matches(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/, "i"),
+
+        body('confirm_password').custom((value, { req }) => {
+            if (value !== req.body.password) {
+              throw new Error("Password confirmation does not match");
+            }
+        
+            // Indicates the success of this synchronous custom validator
+            return true;
+          }),
+
+        (req, res, next) => {  
+        const result = validationResult(req); //It stores all the errors
         // get data from form 
+        // Make sure there is no error
         // map data(optional)
         // save data into database
-        const {first_name, last_name, email, password} = req.body;
+        if(!result.isEmpty()){
+            res.render('./pages/register.ejs', {
+                errors: result.errors
+            })
+        }else{
+            const {first_name, last_name, email, password} = req.body;
        
-        bcrypt.hash(password, saltRounds, (err, hash) => {
-            if(err){
-                return next(err);
-            }
-            db.none("INSERT INTO users(first_name, last_name, email, password) VALUES ($1, $2, $3, $4)", [first_name, last_name, email, hash])
-            .then(() => {
-                // res.redirect('/home') 
-                res.send('Success');
-            })
-            .catch((err) => {
-                console.log(err);
-                next(err);
-            })
-        });
+            bcrypt.hash(password, saltRounds, (err, hash) => {
+                if(err){
+                    return next(err);
+                }
+                db.oneOrNone("INSERT INTO users(first_name, last_name, email, password) VALUES ($1, $2, $3, $4) RETURNING * " , [first_name, last_name, email, hash])
+                .then((user) => {
+                    let token = generateToken(user);//It generates a token for the user
+                    res.cookie('jwt', token)
+                    res.redirect('../') 
+                })
+                .catch((err) => {
+                    console.log(err);
+                    next(err);
+                })
+            });
+        }
+
+        
     })
 
 // Logout Router
-router.get('/logout', (req, res, next) => {
-    console.log('Hit this url')
-    res.cookie('jwt', '', {
-        maxAge: 1
-    })
-    res.redirect('/auth/login');
-})
+// router.get('/logout', (req, res, next) => {
+//     console.log('Hit this url')
+//     res.cookie('jwt', '', {
+//         maxAge: 1
+//     })
+//     res.redirect('/auth/login');
+// })
 module.exports = router;

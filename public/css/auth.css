@@ -5,6 +5,16 @@
     --table-head: #FAFAFA;
     --blacky-white: #ddd;
   }
+.auth-error p{
+    width: 100%;
+    text-align: center;
+    color: #322;
+    background-color: #F8D7DA;
+    font-size: .8em;
+    padding: .8em 1em;
+    margin: .5em 0;
+    border-radius: 6px;
+}
 .logo img{
     width: 40px;
 }
@@ -14,12 +24,12 @@ main{
     justify-content: center;
     align-items: center;
 }
-.login-container{
+.auth-container{
     width: 350px;
     text-align: center;
     
 }
-.login-form{
+.auth-form{
     background-color: var(--white);
     border-radius: 15px;
     padding:2em 3em;
@@ -56,4 +66,20 @@ main{
     padding: .4em;
     margin-top: 1em;
     cursor: pointer;
+}
+
+/* Error page */
+.main-error{
+    text-align: center;
+}
+.error-head{
+    font-size: 4em;
+    text-align: center;
+}
+.error-h2{
+    font-size: 2em;
+    margin: 1em 0 .1em;
+}
+.error-details{
+    display: block;
 }

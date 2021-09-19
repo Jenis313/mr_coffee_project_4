@@ -31,7 +31,7 @@ app.use('/', mainRouter);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next({
-    msg: 'Not Found',
+    msg: 'Page not found',
     status: 404
   });
 });
@@ -39,13 +39,16 @@ app.use(function(req, res, next) {
 app.use(function(err, req, res, next) {
   console.log('ERROR Handling middleware in execution!!! --> ', err);
 
-  res.json({
-    msg: err.msg || err,
-    status: err.status || 404
-  })
-  // render the error page
   // res.status(err.status || 500);
-  // res.render('error');
+  // res.json({
+  //   msg: err.msg || err,
+  //   status: err.status || 404
+  // })
+
+  // render the error page
+  res.render('./pages/error', {
+    msg: err.msg || err
+  });
 });
 
 app.listen(PORT, (err) => {

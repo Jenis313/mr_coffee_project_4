@@ -1,15 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>error</title>
-</head>
-<body>
-    
-<h1>
-    something is wrong, please try again.
-</h1>
+<%- include('./../partials/auth-header') %>
+<main>
+    <div class="main-error">
+        <h1 class="error-head">
+            Something went wrong!!!
+        </h1>
+        <h2 class="error-h2">Error details:</h2>
+        <p class="error-details">
+            <%= msg%>
+        </p>
+    </div>
+</main>
 </body>
-</html>
