@@ -53,7 +53,7 @@ To use this web app first register with an email and log in with the same email 
 </a>
 
 ## 🎉 Acknowledgements <a name = "acknowledgement"></a>
-- [Cat Turnbell](https://github.com/cattrn)
+- [Cat Turnbull](https://github.com/cattrn)
 - [Net Ninja YouTube](https://www.youtube.com/channel/UCW5YeuERMmlnqo4oq8vwUpg)
 - [Font Awesome](https://fontawesome.com)
 - [Orix Agency dribbble](https://dribbble.com/shots/16379794-Apartment-Rent-Website)
