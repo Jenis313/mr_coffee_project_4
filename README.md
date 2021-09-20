@@ -24,9 +24,9 @@ To run this project on your machine
 - git clone https://github.com/Jenis313/mr_coffee_project_4
 - cd mr_coffee_project_4
 - npm install
+- visit configs>db.config.js and change user, password, host, port, dbName based on your machine if needed
 - npm run create_db 
 - npm run create_tables
-- visit configs>db.config.js and change user, password, host, port, dbName based on your machine if needed
 - Start server(node app.js)
 
 ## 🎈 Usage <a name="usage"></a>
