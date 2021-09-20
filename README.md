@@ -23,7 +23,7 @@ This is a simple web app which stores the schedules of registered users. As it i
 To run this project on your machine
 - git clone https://github.com/Jenis313/mr_coffee_project_4
 - cd mr_coffee_project_4
-- npm init
+- npm install
 - npm run create_db 
 - npm run create_tables
 - visit configs>db.config.js and change user, password, host, port, dbName based on your machine if needed
