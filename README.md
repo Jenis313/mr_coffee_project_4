@@ -1,24 +1,18 @@
 <p align="center">
   <a href="" rel="noopener">
- <img width=200px height=200px src="public/images/logo_dark.png" alt="Project logo"></a>
+ <img width=200px src="public/images/logo_dark.png" alt="Project logo"></a>
 </p>
 
 <h3 align="center">Mr coffee scheudle management app</h3>
 
-<div align="center">
-
-[![Contributors][contributors-shield]][contributors-url]
-[![Status](https://img.shields.io/badge/status-active-success.svg)]() 
-[![License](https://img.shields.io/badge/license-MIT-blue.svg)](/LICENSE)
-[![LinkedIn][linkedin-shield]][linkedin-url]
-
-</div>
-
----
-
 <p align="center"> Mr coffee schedule management app created in INCODE BOOTCAMP
     <br> 
 </p>
+
+## Contributors
+
+
+
 
 ## 📝 Table of Contents
 - [About](#about)
@@ -56,8 +50,12 @@ To use this web app first register with an email and log in with the same email 
 - [ ] Improve login and register form validations.
 
 ## ✍️ Authors <a name = "authors"></a>
-- [@Jenis313](https://github.com/Jenis313) - Backend
-- [@anniejiang2021](https://github.com/anniejiang2021) - Frontend
+<a href="https://github.com/Jenis313">
+  <img src="https://avatars.githubusercontent.com/u/56223784" alt="Jenis Rai" width="100"/>
+</a>
+<a href="https://github.com/anniejiang2021">
+  <img src="https://avatars.githubusercontent.com/u/89071440" alt="Yu Jiang" width="100"/>
+</a>
 
 ## 🎉 Acknowledgements <a name = "acknowledgement"></a>
 - [Cat Turnbell](https://github.com/cattrn)
