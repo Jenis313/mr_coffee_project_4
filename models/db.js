@@ -1,8 +1,13 @@
 // Loading and initializing the library:
 const pgp = require('pg-promise')();
+const { user,
+    password,
+    host,
+    port,
+    dbName } = require('./../configs/db.config');
 
 // Preparing the connection details:
-const ConnectionURL = 'postgres://postgres:admin@localhost:5432/mr_coffee_db_4';
+const ConnectionURL = `postgres://${user}:${password}@${host}:${port}/${dbName}`;
 
 // Creating a new database instance from the connection details:
 const db = pgp(ConnectionURL);
